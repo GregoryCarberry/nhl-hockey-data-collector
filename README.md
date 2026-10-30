@@ -10,7 +10,7 @@ This is a tested result in the author's environment, **not** a claim that the bo
 
 ## Repository contents
 
-- `release/NHL_Hockey_Data_Collector_v1.0_AA360.zip`: original importable AA360 export, verified against the uploaded release ZIP.
+- `release/NHL_Hockey_Data_Collector_v1.0.0_AA360.zip`: original importable AA360 export, verified against the uploaded release ZIP.
 - `source/`: unpacked bot definition, manifest and six recorder metadata images for inspection.
 - [CHANGELOG.md](CHANGELOG.md): verified milestones and changes.
 
