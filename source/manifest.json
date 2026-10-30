@@ -1,0 +1,117 @@
+{
+  "files": [
+    {
+      "path": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector",
+      "newPath": null,
+      "contentType": "application/vnd.aa.taskbot",
+      "metadataForFile": null,
+      "manualDependencies": [],
+      "scannedDependencies": [],
+      "manualDependenciesNewPaths": [],
+      "scannedDependenciesNewPaths": [],
+      "description": "",
+      "author": "",
+      "tags": [
+        {
+          "namespace": "INTENDED_TARGET",
+          "value": "WINDOWS"
+        },
+        {
+          "namespace": "COMPATIBLE_TARGET",
+          "value": "MAC_OS"
+        },
+        {
+          "namespace": "COMPATIBLE_TARGET",
+          "value": "WINDOWS"
+        }
+      ],
+      "excluded": false
+    },
+    {
+      "path": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector\\0db275fc-245c-448e-a0fb-a53cd27e1978.png",
+      "newPath": null,
+      "contentType": "image/png",
+      "metadataForFile": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector",
+      "manualDependencies": null,
+      "scannedDependencies": null,
+      "manualDependenciesNewPaths": [],
+      "scannedDependenciesNewPaths": [],
+      "description": "",
+      "author": "",
+      "tags": [],
+      "excluded": false
+    },
+    {
+      "path": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector\\574eb821-677a-42fd-a8d0-80b545ade853.png",
+      "newPath": null,
+      "contentType": "image/png",
+      "metadataForFile": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector",
+      "manualDependencies": null,
+      "scannedDependencies": null,
+      "manualDependenciesNewPaths": [],
+      "scannedDependenciesNewPaths": [],
+      "description": "",
+      "author": "",
+      "tags": [],
+      "excluded": false
+    },
+    {
+      "path": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector\\8e2ba2b2-a37f-4f35-8b17-b6379fe20726.png",
+      "newPath": null,
+      "contentType": "image/png",
+      "metadataForFile": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector",
+      "manualDependencies": null,
+      "scannedDependencies": null,
+      "manualDependenciesNewPaths": [],
+      "scannedDependenciesNewPaths": [],
+      "description": "",
+      "author": "",
+      "tags": [],
+      "excluded": false
+    },
+    {
+      "path": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector\\89e72304-009c-4eda-873d-0d348810e879.png",
+      "newPath": null,
+      "contentType": "image/png",
+      "metadataForFile": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector",
+      "manualDependencies": null,
+      "scannedDependencies": null,
+      "manualDependenciesNewPaths": [],
+      "scannedDependenciesNewPaths": [],
+      "description": "",
+      "author": "",
+      "tags": [],
+      "excluded": false
+    },
+    {
+      "path": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector\\cee47c90-7fc6-455f-a5a2-e0d8b0060fdc.png",
+      "newPath": null,
+      "contentType": "image/png",
+      "metadataForFile": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector",
+      "manualDependencies": null,
+      "scannedDependencies": null,
+      "manualDependenciesNewPaths": [],
+      "scannedDependenciesNewPaths": [],
+      "description": "",
+      "author": "",
+      "tags": [],
+      "excluded": false
+    },
+    {
+      "path": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector\\52d3c1e0-8a23-4e31-99aa-efbdcfa5bfce.png",
+      "newPath": null,
+      "contentType": "image/png",
+      "metadataForFile": "Automation Anywhere\\Bots\\NHL_Hockey_Data_Collector",
+      "manualDependencies": null,
+      "scannedDependencies": null,
+      "manualDependenciesNewPaths": [],
+      "scannedDependenciesNewPaths": [],
+      "description": "",
+      "author": "",
+      "tags": [],
+      "excluded": false
+    }
+  ],
+  "packages": [],
+  "globalValues": []
+}
