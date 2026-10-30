@@ -41,6 +41,18 @@ The Recorder's extracted Data Table exposed empty internal column names in tests
 
 The bot depends on the current HTML/selector layout of a third-party demo website, which can change.
 
+
+## Responsible scraping
+
+[Scrape This Site](https://www.scrapethissite.com/) is designed for learning web scraping and explicitly permits educational extraction in its [FAQ](https://www.scrapethissite.com/pages/faq/). Its published guidance, as shown on the FAQ, also asks clients to:
+
+- Make no more than **one request per second**.
+- Identify themselves with a **User-Agent**.
+- Respect the site's [robots.txt](https://www.scrapethissite.com/robots.txt).
+- Avoid interfering with other visitors.
+
+**Compliance status:** v1.0.0 has not been independently measured for request frequency, User-Agent identification, or robots.txt compliance. Browser navigation may trigger additional requests beyond the 25 page attempts visible in the bot. Do not run it repeatedly or schedule unattended scraping without checking those requirements first. A future version could introduce rate limiting, suitable identification and explicit safeguards for responsible operation.
+
 ## Known limitations (v1.0)
 
 - Basic absence-of-Next detection does not distinguish a genuine final page from every possible browser/selector failure.
