@@ -1,0 +1,6 @@
+# Local results and temporary working files (do not commit by default)
+output/
+*.log
+__pycache__/
+.DS_Store
+Thumbs.db
