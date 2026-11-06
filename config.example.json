@@ -1,0 +1,16 @@
+{
+  "source": {
+    "url": "https://www.scrapethissite.com/pages/forms/",
+    "next_link_xpath": "//a[@aria-label='Next']"
+  },
+  "scraping": {
+    "max_page_attempts": 30,
+    "minimum_delay_ms": 3000
+  },
+  "output": {
+    "directory": "C:\\Automation\\NHL_Hockey_Data_Collector\\output",
+    "consolidated_filename": "hockey_stats_consolidated.csv",
+    "working_filename": "hockey_stats_working_page.csv",
+    "last_page_filename": "hockey_stats_debug_last_page.csv"
+  }
+}
