@@ -15,7 +15,7 @@ This is a tested result in the author's environment, **not** a claim that the bo
 ## Repository contents
 
 - `release/NHL_Hockey_Data_Collector_v1.0.0_AA360.zip`: original importable AA360 export, preserved as the historical v1.0.0 baseline.
-- `release/NHL_Hockey_Data_Collector_v1.1.0_sanitised_AA360.zip`: sanitised v1.1.0 export (to be added to the release branch before publication).
+- `release/NHL_Hockey_Data_Collector_v1.1.0_AA360.zip`: sanitised v1.1.0 AA360 export, with generic configuration-path defaults.
 - [`config.example.json`](config.example.json) and [`docs/v1.1.0-import-setup.md`](docs/v1.1.0-import-setup.md): example settings and import instructions.
 - `source/`: unpacked bot definition, manifest and six recorder metadata images for inspection.
 - [CHANGELOG.md](CHANGELOG.md): verified milestones and changes.
