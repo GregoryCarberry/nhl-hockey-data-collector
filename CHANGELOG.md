@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.2.0 — release candidate (17 November 2026)
+
+- Added five scoped Try/Catch handlers for JSON configuration loading, numeric conversion, browser startup, scraping/pagination, and final CSV writes. Captured exceptions are reported with action line numbers before stopping.
+- Added browser-start reset: navigate an existing matching Chrome tab to the configured source URL; on the recognised missing-tab error open a new Chrome window, then verify the actual starting URL via JavaScript.
+- Added explicit **COMPLETED**, **PARTIAL RUN**, and **FAILED** messages. The PARTIAL branch warns if more pages remain at the configured attempt cap, including test case 3 attempts / 2 unique pages / 50 records.
+- Moved completion reporting after the two final CSV writes and added failure reporting for a write error that could leave one CSV updated and the other stale.
+- Added an outer Try/Catch around the main pagination loop, including intermediate CSV processing.
+- Verified controlled negative tests and subsequent 582-row positive regressions; see [v1.2.0 validation](docs/v1.2.0-validation.md).
+- Sanitised distribution changes only generic configuration-path variable defaults. A separately imported v1.2.0 ZIP was successfully run after setting the external configuration path, with independent full CSV readback on 17 November 2026.
+- Remaining limitations include interactive operation, no structured persistent logs or automatic retries, message-text-based browser fallback, and no measured HTTP-level scraping compliance.
+
 ## v1.1.0 — release candidate (6 November 2026)
 
 - Added external JSON configuration for source URL, maximum page attempts (1–30), minimum pre-navigation delay (2,000–60,000 ms), output directory and three CSV filenames.
