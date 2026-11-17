@@ -2,7 +2,7 @@
 
 A personal portfolio project built in **Automation Anywhere 360 Community Edition**. The bot extracts NHL team-season statistics from the paginated [Scrape This Site hockey table](https://www.scrapethissite.com/pages/forms/), skips repeated pages by comparing their contents, and writes a consolidated CSV.
 
-> **Latest development release: v1.1.0 (release candidate).** The new version adds external JSON settings, basic startup validation, configurable CSV paths and a 3-second pre-navigation delay. It is still interactive and **has not been independently import-tested** from the sanitised ZIP. The v1.0.0 package is retained unchanged.
+> **Latest tested release candidate: v1.2.0.** Builds on v1.1.0 with scoped Try/Catch error reporting, browser-tab start recovery and URL validation, and separate COMPLETED / PARTIAL / FAILED messages. The sanitised v1.2.0 ZIP has been independently imported into AA360 and run successfully after configuring an external JSON file. The bot is still interactive and not intended for unattended operation.
 
 ## Verified results
 
@@ -12,11 +12,14 @@ This is a tested result in the author's environment, **not** a claim that the bo
 
 **v1.1.0 local regression (6 November 2026):** A clean full run generated 582 rows with one nine-column header, no empty or identical duplicate rows, matching the first two retained page references and seven final-page diagnostic rows. An earlier run produced only 532 rows after apparently starting at page 3; an old browser window is suspected but not proven. The sanitised distribution ZIP has only passed static checks, not an independent Control Room import. See [v1.1.0 validation notes](docs/v1.1.0-validation.md).
 
+**v1.2.0 sanitised-package regression (17 November 2026):** Independently imported the sanitised v1.2.0 AA360 ZIP, configured `fConfigFile`, and generated fresh consolidated and last-page CSVs. Independent Drive readback verified **582** nine-column data rows, zero blank/identical duplicate rows, exact matches to first two retained page baselines and the last seven diagnostic rows. The earlier stale-browser state can now be caught and reset in tested scenarios. Controlled negative tests confirmed configured failure reports for missing JSON, invalid numbers, intermediate and final CSV failures, and page-cap PARTIAL reporting. See [v1.2.0 validation notes](docs/v1.2.0-validation.md).
+
 ## Repository contents
 
 - `release/NHL_Hockey_Data_Collector_v1.0.0_AA360.zip`: original importable AA360 export, preserved as the historical v1.0.0 baseline.
-- `release/NHL_Hockey_Data_Collector_v1.1.0_AA360.zip`: sanitised v1.1.0 AA360 export, with generic configuration-path defaults.
-- [`config.example.json`](config.example.json) and [`docs/v1.1.0-import-setup.md`](docs/v1.1.0-import-setup.md): example settings and import instructions.
+- `release/NHL_Hockey_Data_Collector_v1.1.0_AA360.zip`: preserved v1.1.0 sanitised AA360 export.
+- `release/NHL_Hockey_Data_Collector_v1.2.0_AA360.zip`: sanitised v1.2.0 AA360 export with generic configuration-path defaults.
+- [`config.example.json`](config.example.json) and [`docs/v1.2.0-import-setup.md`](docs/v1.2.0-import-setup.md): example settings and latest import instructions (v1.1.0 guide retained separately).
 - `source/`: unpacked bot definition, manifest and six recorder metadata images for inspection.
 - [CHANGELOG.md](CHANGELOG.md): verified milestones and changes.
 
@@ -38,7 +41,9 @@ The Recorder's extracted Data Table exposed empty internal column names in tests
 
 ## Import and setup
 
-**For v1.1.0**, use [the v1.1.0 setup guide](docs/v1.1.0-import-setup.md): create your own `config.json`, point the AA360 File variable `fConfigFile` to it, and configure a writable output folder. The JSON contains source URL, page limit, minimum pre-navigation delay and three CSV filenames. The example paths are illustrative; the bot does not automatically discover the configuration file.
+**For v1.2.0**, use [the v1.2.0 setup guide](docs/v1.2.0-import-setup.md): create your own `config.json`, point the AA360 File variable `fConfigFile` to it, and configure a writable output folder. The JSON contains source URL, page limit, minimum pre-navigation delay and three CSV filenames. The example paths are illustrative; the bot does not automatically discover the configuration file.
+
+**For v1.1.0**, see its [original import guide](docs/v1.1.0-import-setup.md). Its historic validation notes accurately describe the test status at the time.
 
 **For the historical v1.0.0 release:**
 
@@ -61,7 +66,7 @@ The bot depends on the current HTML/selector layout of a third-party demo websit
 - Respect the site's [robots.txt](https://www.scrapethissite.com/robots.txt).
 - Avoid interfering with other visitors.
 
-**Compliance status:** Neither v1.0.0 nor v1.1.0 has been independently measured for request frequency, User-Agent identification, or robots.txt compliance. Browser navigation may trigger additional requests beyond the 25 page attempts visible in the bot. Do not run it repeatedly or schedule unattended scraping without checking those requirements first. v1.1.0 adds a configurable minimum delay before clicking Next (tested at 2,000 and 3,000 ms), but that is **not** a measured HTTP rate limit or proof of identification/robots.txt compliance. A future version could introduce measured request controls and explicit safeguards.
+**Compliance status:** None of v1.0.0, v1.1.0 or v1.2.0 has been independently measured for request frequency, User-Agent identification, or robots.txt compliance. Browser navigation may trigger additional requests beyond the 25 page attempts visible in the bot. Do not run it repeatedly or schedule unattended scraping without checking those requirements first. v1.1.0 adds a configurable minimum delay before clicking Next (tested at 2,000 and 3,000 ms), but that is **not** a measured HTTP rate limit or proof of identification/robots.txt compliance. A future version could introduce measured request controls and explicit safeguards.
 
 ## Known limitations (v1.0)
 
@@ -73,13 +78,15 @@ The bot depends on the current HTML/selector layout of a third-party demo websit
 - Page signatures are concatenated plain text, not collision-resistant hashes.
 - A Windows/browser popup can interrupt UI automation; one such interrupted run was observed and then successfully rerun.
 
-## Planned operational improvements
+## v1.2.0 operational safeguards
 
-A future version should check starting browser/page state and report suspected partial runs. This follows a v1.1.0 run that appeared to finish naturally but missed the first 50 rows. The browser-state explanation remains unconfirmed. More complete error handling, run-status reporting and logging are also planned, not implemented.
+- Try/Catch around JSON loading, numeric conversions, browser start, the main pagination loop, and final CSV writes; exceptions display the message and failing action number before stopping.
+- Attempt to navigate a matching existing browser tab to the configured source URL, opening a new Chrome window on a recognised missing-tab error. JavaScript reads the actual page URL and a fail-closed check rejects a mismatch.
+- COMPLETED is displayed only after pagination reports no more Next link and both final exports return without an error. PARTIAL RUN warns if further pages remain at the attempt cap. FAILED catches specific exceptions; it does not cover every possible silent data-loss condition.
 
 ## Possible subsequent releases
 
-Structured failure handling, non-interactive completion reports, logs, retry/timeout behaviour, configurable paths and improved source-data validation. These are plans, not implemented features.
+Persistent structured logging, explicit machine-readable run status, non-interactive execution, bounded retry/timeout behaviour, more robust completeness checks, safer atomic output handling and measured responsible-scraping controls. These are not yet implemented.
 
 ## Source and attribution
 
